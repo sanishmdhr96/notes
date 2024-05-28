@@ -1,23 +1,55 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  // Component
+  // State
+  // props
+
+  // Note application -> input -> text -> list render -> dynamically / realtime
+  // search feature
+
+  const [note, setNote] = useState('')
+  const [allNotes, setAllNotes] = useState([])
+
+  const addToList = (e) => {
+    e.preventDefault();
+    //spread operators
+    setAllNotes((prevState) => [...prevState, note])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Form */}
+      <form>
+        {/* Create Input */}
+        <input
+          type='text'
+          id='note'
+          onChange={(event) => {
+            setNote(event.target.value)
+          }}
+          value={note}
+        />
+        {/* Submit button */}
+        <button
+          onClick={addToList}
+        >Submit</button>
+      </form>
+
+
+      {/* List */}
+      <ul>
+        {
+          allNotes.map((item, index) =>
+            <li key={index}>
+              {item}
+            </li>
+          )
+        }
+      </ul>
     </div>
   );
 }
