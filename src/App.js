@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import UserInput from './components/InputForm';
 
 function App() {
 
@@ -22,24 +22,24 @@ function App() {
 
   return (
     <div className="App">
-      {/* Form */}
-      <form>
-        {/* Create Input */}
-        <input
-          type='text'
-          id='note'
-          onChange={(event) => {
-            setNote(event.target.value)
-          }}
-          value={note}
-        />
-        {/* Submit button */}
-        <button
-          onClick={addToList}
-        >Submit</button>
-      </form>
+      {/* 
+       InputForm
+      */}
+
+      <UserInput
+        sanish={note}
+        sanishSetter={setNote}
+        addToSanish={addToList}
+      />
 
 
+
+      {/* DisplayNotes */}
+
+
+      {/* 1. Import Display form */}
+
+      {/* 2. Render dispaly form */}
       {/* List */}
       <ul>
         {
